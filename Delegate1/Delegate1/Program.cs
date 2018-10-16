@@ -13,17 +13,26 @@ namespace Delegate1
 
         static void Main(string[] args)
         {
-            Mydelegate mydel = new Mydelegate(Print);
-            mydel += Print;
+            Mydelegate myStaticDel  = Print;
+            ClassA classA = new ClassA();
+            Mydelegate myObjectDel = classA.Print;
 
-            Print("Hello World.");
-            mydel("Hello Mars");
+            Mydelegate myAllDel = myStaticDel + myObjectDel;
+            myAllDel("Hello");
         }
 
         static void Print(string v)
         {
-            Console.WriteLine(v);    
+            Console.WriteLine("Print from static method: " + v);
         }
 
+    }
+
+    class ClassA
+    {
+        public void Print(string v)
+        {
+            Console.WriteLine("Print from class A: " + v);
+        }
     }
 }
