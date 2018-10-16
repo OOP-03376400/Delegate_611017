@@ -10,15 +10,15 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
+    delegate void MyDelegate(string v);
+
     public partial class Form1 : Form
     {
-
-        delegate void myDelegate(string v);
-
-
+        MyDelegate mydel;
         public Form1()
         {
             InitializeComponent();
+            mydel = new MyDelegate(ShowMessageBox);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,9 +28,12 @@ namespace WindowsFormsApp1
 
         private void ShowMessageBox(string v)
         {
-            MessageBox.Show("Hello World", "Demo");
+            MessageBox.Show(v, "Demo");
         }
 
-
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mydel("Hello Mars");
+        }
     }
 }
