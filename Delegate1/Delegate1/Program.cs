@@ -18,7 +18,11 @@ namespace Delegate1
             Mydelegate myObjectDel = classA.Print;
 
             Mydelegate myAllDel = myStaticDel + myObjectDel;
+
+            Mydelegate Mydel2 = x => Console.WriteLine(x);
+
             myAllDel("Hello");
+            Mydel2("Hello Venus");
         }
 
         static void Print(string v)
